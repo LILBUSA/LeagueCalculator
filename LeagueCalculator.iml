@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module version="4">
+  <component name="NewModuleRootManager">
+    <output url="file://$MODULE_DIR$/out/production/LeagueCalculator" />
+    <output-test url="file://$MODULE_DIR$/out/test/LeagueCalculator" />
+    <content url="file://$MODULE_DIR$/assets">
+      <sourceFolder url="file://$MODULE_DIR$/assets" type="java-resource" />
+    </content>
+    <content url="file://$MODULE_DIR$/src">
+      <sourceFolder url="file://$MODULE_DIR$/src" isTestSource="false" />
+    </content>
+    <orderEntry type="jdk" jdkName="openjdk-14" jdkType="JavaSDK" />
+    <orderEntry type="sourceFolder" forTests="false" />
+  </component>
+</module>

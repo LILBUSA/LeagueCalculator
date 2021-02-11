@@ -23,27 +23,27 @@ public class Stats {
 
     public void sortRoles() {
         for (int i = 0; i < champions.size(); i++) {
-            if (champions.get(i).getRole().equals("top")) {
+            if (champions.get(i).getRole(1).equals("top")) {
                 top.add(champions.get(i));
             }
         }
         for (int i = 0; i < champions.size(); i++) {
-            if (champions.get(i).getRole().equals("jgl")) {
+            if (champions.get(i).getRole(1).equals("jgl")) {
                 jgl.add(champions.get(i));
             }
         }
         for (int i = 0; i < champions.size(); i++) {
-            if (champions.get(i).getRole().equals("mid")) {
+            if (champions.get(i).getRole(1).equals("mid")) {
                 mid.add(champions.get(i));
             }
         }
         for (int i = 0; i < champions.size(); i++) {
-            if (champions.get(i).getRole().equals("bot")) {
+            if (champions.get(i).getRole(1).equals("bot")) {
                 bot.add(champions.get(i));
             }
         }
         for (int i = 0; i < champions.size(); i++) {
-            if (champions.get(i).getRole().equals("sup")) {
+            if (champions.get(i).getRole(1).equals("sup")) {
                 sup.add(champions.get(i));
             }
         }
