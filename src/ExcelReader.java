@@ -37,6 +37,4 @@ public class ExcelReader {
         value = cell.getStringCellValue();    //getting cell value
         return value;               //returns the cell value
     }
-
-    public String getRate(int offset, )
 }

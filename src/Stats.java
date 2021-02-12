@@ -1,4 +1,5 @@
 import java.io.IOException;
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 public class Stats {
@@ -10,12 +11,13 @@ public class Stats {
     ArrayList<Champion> bot = new ArrayList<>();
     ArrayList<Champion> sup = new ArrayList<>();
 
-    public Stats(ArrayList<Champion> champions) throws IOException {
+    public Stats() throws IOException {
         for(int i = 0; i <= champions.size(); i++) {
             champions.get(i).setName(reader.readCellData((i + 1), 0));
             champions.get(i).setWinRate(Integer.parseInt(reader.readCellData((i + 1), 1)));
             champions.get(i).setBanRate(Integer.parseInt(reader.readCellData((i + 1),2)));
             champions.get(i).setPickRate(Integer.parseInt(reader.readCellData((i + 1), 3)));
+            champions.get(i).setRole(reader.readCellData((i + 1), 4));
             System.out.println(champions.get(i).toString());
         }
         sortRoles();
@@ -24,45 +26,69 @@ public class Stats {
     public void sortRoles() {
         for (int i = 0; i < champions.size(); i++) {
             if (champions.get(i).getRole().equals("top")) {
-                top.add(champions.get(i));
+                getTop().add(champions.get(i));
             }
         }
         for (int i = 0; i < champions.size(); i++) {
             if (champions.get(i).getRole().equals("jgl")) {
-                jgl.add(champions.get(i));
+                getJgl().add(champions.get(i));
             }
         }
         for (int i = 0; i < champions.size(); i++) {
             if (champions.get(i).getRole().equals("mid")) {
-                mid.add(champions.get(i));
+                getMid().add(champions.get(i));
             }
         }
         for (int i = 0; i < champions.size(); i++) {
             if (champions.get(i).getRole().equals("bot")) {
-                bot.add(champions.get(i));
+                getBot().add(champions.get(i));
             }
         }
         for (int i = 0; i < champions.size(); i++) {
             if (champions.get(i).getRole().equals("sup")) {
-                sup.add(champions.get(i));
+                getSup().add(champions.get(i));
             }
         }
     }
 
-    public Champion pick(String role) {
-        Champion picked;
-        if (role.equals("top")) {
+//    public Champion pick(String role) {
+//        Champion picked;
+//        if (role.equals("top")) {
+//
+//            return picked;
+//        } else if (role.equals("jgl")) {
+//
+//        } else if (role.equals("mid")) {
+//
+//        } else if (role.equals("bot")) {
+//
+//        } else if (role.equals("sup")) {
+//
+//        }
+//    }
 
-            return picked;
-        } else if (role.equals("jgl")) {
+    public ArrayList<Champion> getChampions() {
+        return champions;
+    }
 
-        } else if (role.equals("mid")) {
+    public ArrayList<Champion> getTop() {
+        return top;
+    }
 
-        } else if (role.equals("bot")) {
+    public ArrayList<Champion> getJgl() {
+        return jgl;
+    }
 
-        } else if (role.equals("sup")) {
+    public ArrayList<Champion> getMid() {
+        return mid;
+    }
 
-        }
+    public ArrayList<Champion> getBot() {
+        return bot;
+    }
+
+    public ArrayList<Champion> getSup() {
+        return sup;
     }
 
 }
