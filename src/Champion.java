@@ -2,14 +2,14 @@ import java.io.IOException;
 
 public class Champion {
     private String name;
-    private String[] role;
+    private String[] roles;
     private float winRate;
     private float banRate;
     private float pickRate;
 
-    public Champion(String name, String[] role, float winRate, float banRate, float pickRate) {
+    public Champion(String name, String[] roles, float winRate, float banRate, float pickRate) {
         this.name = name;
-        this.role = new String[2];
+        roles = new String[3];
         this.winRate = winRate;
         this.banRate = banRate;
         this.pickRate = pickRate;
@@ -23,12 +23,8 @@ public class Champion {
         this.name = name;
     }
 
-    public String getRole(int i) {
-        return role[i];
-    }
-
-    public void setRole(String role, int i) {
-        role[i] = role;
+    public String[] getRoles() {
+        return roles;
     }
 
     public float getWinRate() {
@@ -53,6 +49,12 @@ public class Champion {
 
     public void setPickRate(float pickRate) {
         this.pickRate = pickRate;
+    }
+
+    public void seperateRoles() {
+        if () {
+
+        }
     }
 
     @Override
