@@ -17,7 +17,7 @@ public class Stats {
             champions.get(i).setWinRate(Integer.parseInt(reader.readCellData((i + 1), 1)));
             champions.get(i).setBanRate(Integer.parseInt(reader.readCellData((i + 1),2)));
             champions.get(i).setPickRate(Integer.parseInt(reader.readCellData((i + 1), 3)));
-            champions.get(i).setRole(reader.readCellData((i + 1), 4));
+            champions.get(i).setRoles(reader.readCellData((i + 1), 4));
             System.out.println(champions.get(i).toString());
         }
         sortRoles();
@@ -25,27 +25,27 @@ public class Stats {
 
     public void sortRoles() {
         for (int i = 0; i < champions.size(); i++) {
-            if (champions.get(i).getRole().equals("top")) {
+            if (champions.get(i).getRoles().equals("top")) {
                 getTop().add(champions.get(i));
             }
         }
         for (int i = 0; i < champions.size(); i++) {
-            if (champions.get(i).getRole().equals("jgl")) {
+            if (champions.get(i).getRoles().equals("jgl")) {
                 getJgl().add(champions.get(i));
             }
         }
         for (int i = 0; i < champions.size(); i++) {
-            if (champions.get(i).getRole().equals("mid")) {
+            if (champions.get(i).getRoles().equals("mid")) {
                 getMid().add(champions.get(i));
             }
         }
         for (int i = 0; i < champions.size(); i++) {
-            if (champions.get(i).getRole().equals("bot")) {
+            if (champions.get(i).getRoles().equals("bot")) {
                 getBot().add(champions.get(i));
             }
         }
         for (int i = 0; i < champions.size(); i++) {
-            if (champions.get(i).getRole().equals("sup")) {
+            if (champions.get(i).getRoles().equals("sup")) {
                 getSup().add(champions.get(i));
             }
         }
