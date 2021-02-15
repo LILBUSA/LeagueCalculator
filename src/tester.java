@@ -1,8 +1,10 @@
 public class tester {
     public static void main(String[] args) {
         String[] arr = new String[3];
-        arr[0] = "Support";
+        arr[0] = "sup adc";
         Champion rakan = new Champion("Rakan", arr, .50f, .02f, .01f);
-        System.out.println(rakan.getRoles());
+        for (String str:rakan.getRoles()) {
+            System.out.println(str);
+        }
     }
 }

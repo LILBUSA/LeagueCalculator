@@ -4,7 +4,8 @@ import java.util.ArrayList;
 
 public class Stats {
     ExcelReader reader = new ExcelReader("C:\\Users\\bigta\\IdeaProjects\\Event Token Calculator\\assets\\championstats.xlsx");
-    ArrayList<Champion> champions = new ArrayList<Champion>(Integer.parseInt(reader.readCellData(1, 4)));
+    int numChamps = 154;
+    ArrayList<Champion> champions = new ArrayList<Champion>();
     ArrayList<Champion> top = new ArrayList<>();
     ArrayList<Champion> jgl = new ArrayList<>();
     ArrayList<Champion> mid = new ArrayList<>();
@@ -12,12 +13,14 @@ public class Stats {
     ArrayList<Champion> sup = new ArrayList<>();
 
     public Stats() throws IOException {
-        for(int i = 0; i <= champions.size(); i++) {
-            champions.get(i).setName(reader.readCellData((i + 1), 0));
-            champions.get(i).setWinRate(Integer.parseInt(reader.readCellData((i + 1), 1)));
-            champions.get(i).setBanRate(Integer.parseInt(reader.readCellData((i + 1),2)));
-            champions.get(i).setPickRate(Integer.parseInt(reader.readCellData((i + 1), 3)));
-            champions.get(i).setRoles(reader.readCellData((i + 1), 4));
+        for(int i = 0; i <= numChamps; i++) {
+            String name = reader.readCellData((i + 1), 0);
+            float wr = Float.parseFloat(reader.readCellData((i + 1), 1));
+            float br = Float.parseFloat(reader.readCellData((i + 1), 2));
+            float pr = Float.parseFloat(reader.readCellData((i + 1), 3));
+            String[] roles = new String[3];
+            roles[0] = reader.readCellData((i + 1), 4);
+            champions.add(new Champion(name, roles, wr, br, pr));
             System.out.println(champions.get(i).toString());
         }
         sortRoles();
@@ -25,28 +28,19 @@ public class Stats {
 
     public void sortRoles() {
         for (int i = 0; i < champions.size(); i++) {
-            if (champions.get(i).getRoles().equals("top")) {
-                getTop().add(champions.get(i));
-            }
-        }
-        for (int i = 0; i < champions.size(); i++) {
-            if (champions.get(i).getRoles().equals("jgl")) {
-                getJgl().add(champions.get(i));
-            }
-        }
-        for (int i = 0; i < champions.size(); i++) {
-            if (champions.get(i).getRoles().equals("mid")) {
-                getMid().add(champions.get(i));
-            }
-        }
-        for (int i = 0; i < champions.size(); i++) {
-            if (champions.get(i).getRoles().equals("bot")) {
-                getBot().add(champions.get(i));
-            }
-        }
-        for (int i = 0; i < champions.size(); i++) {
-            if (champions.get(i).getRoles().equals("sup")) {
-                getSup().add(champions.get(i));
+            Champion champ = champions.get(i);
+            for (String str:champ.getRoles()) {
+                if (str.equals("top")) {
+                    getTop().add(champ);
+                } else if (str.equals("jgl")) {
+                    getJgl().add(champ);
+                } else if (str.equals("mid")) {
+                    getMid().add(champ);
+                } else if (str.equals("bot")) {
+                    getBot().add(champ);
+                } else if (str.equals("sup")) {
+                    getSup().add(champ);
+                }
             }
         }
     }
@@ -91,4 +85,10 @@ public class Stats {
         return sup;
     }
 
+    public void champList() {
+        for(Champion champ:getChampions()) {
+            System.out.println(champ.toString());
+        }
+
+    }
 }

@@ -13,7 +13,7 @@ public class ExcelReader {
     XSSFWorkbook wb;
     XSSFSheet sheet;
     FormulaEvaluator formulaEvaluator;
-
+    DataFormatter formatter = new DataFormatter();
     public ExcelReader(String pathName) throws IOException {
         file = new File(pathName);
         fis = new FileInputStream(file);
@@ -34,7 +34,7 @@ public class ExcelReader {
         Sheet sheet = wb.getSheetAt(0);   //getting the XSSFSheet object at given index
         Row row = sheet.getRow(vRow); //returns the logical row
         Cell cell = row.getCell(vColumn); //getting the cell representing the given column
-        value = cell.getStringCellValue();    //getting cell value
+        value = formatter.formatCellValue(cell);    //getting cell value
         return value;               //returns the cell value
     }
 }

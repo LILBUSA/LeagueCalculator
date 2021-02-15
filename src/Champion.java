@@ -57,9 +57,12 @@ public class Champion {
         for (int i = 0; i < str.length(); i++) {
             char c = str.charAt(i);
             if (c == ' ') {
-                roles[num] = str.substring(0, i + 1);
-                str = str.substring(i + 1, str.length() + 1);
+                roles[num] = str.substring(i - 3, i);
+                str = str.substring(i + 1, str.length());
+                i = 0;
                 num++;
+            } else if (i == str.length() - 1) {
+                roles[num] = str;
             }
         }
         return roles;
@@ -67,7 +70,21 @@ public class Champion {
 
     @Override
     public String toString() {
-        return "Name: " + getName() + " Win Rate: " + getWinRate() + " Ban Rate: " + getBanRate() + " Pick Rate: " + getPickRate();
+        if (getRoles()[1] == null) {
+            return "Name:" + getName() + spaces(getName(), 16) + " Win Rate: " + getWinRate() + spaces(getWinRate() + "", 6) + " Ban Rate: " + getBanRate() + spaces(getBanRate() + "", 6) + " Pick Rate: " + getPickRate() + spaces(getPickRate() + "", 6) + " Roles: " + getRoles()[0];
+        } else if (getRoles()[2] == null) {
+            return "Name:" + getName() + spaces(getName(), 16) + " Win Rate: " + getWinRate() + spaces(getWinRate() + "", 6) + " Ban Rate: " + getBanRate() + spaces(getBanRate() + "", 6) + " Pick Rate: " + getPickRate() + spaces(getPickRate() + "", 6) + " Roles: " + getRoles()[0] + " " + getRoles()[1];
+        } else {
+            return "Name:" + getName() + spaces(getName(), 16) + " Win Rate: " + getWinRate() + spaces(getWinRate() + "", 6) + " Ban Rate: " + getBanRate() + spaces(getBanRate() + "", 6) + " Pick Rate: " + getPickRate() + spaces(getPickRate() + "", 6) + " Roles: " + getRoles()[0] + " " + getRoles()[1] + " " + getRoles()[2];
+        }
     }
 
+    public String spaces(String str, int spaces) {
+        String out = "";
+        spaces -= str.length();
+        for (int i = 0; i < spaces; i++) {
+            out += " ";
+        }
+        return out;
+    }
 }
