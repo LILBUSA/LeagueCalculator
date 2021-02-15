@@ -9,7 +9,7 @@ public class Champion {
 
     public Champion(String name, String[] roles, float winRate, float banRate, float pickRate) {
         this.name = name;
-        roles = new String[3];
+        this.roles = separateRoles(roles);
         this.winRate = winRate;
         this.banRate = banRate;
         this.pickRate = pickRate;
@@ -51,10 +51,18 @@ public class Champion {
         this.pickRate = pickRate;
     }
 
-    public void seperateRoles() {
-        if () {
-
+    public String[] separateRoles(String[] roles) {
+        String str = roles[0];
+        int num = 0;
+        for (int i = 0; i < str.length(); i++) {
+            char c = str.charAt(i);
+            if (c == ' ') {
+                roles[num] = str.substring(0, i + 1);
+                str = str.substring(i + 1, str.length() + 1);
+                num++;
+            }
         }
+        return roles;
     }
 
     @Override
