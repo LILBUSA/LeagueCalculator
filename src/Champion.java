@@ -65,6 +65,11 @@ public class Champion {
                 roles[num] = str;
             }
         }
+        for (int i = 0; i < roles.length; i++) {
+            if (roles[i] == null) {
+                roles[i] = "";
+            }
+        }
         return roles;
     }
 

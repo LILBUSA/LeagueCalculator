@@ -7,26 +7,41 @@
 import java.io.IOException;
 
 public class TokenCalculator implements Calculator {
-    Stats stats = new Stats();
     int win = 10;
     int loss = 5;
-    int tokensNeeded;
-    int tokensLeft;
-    int currentTokens;
-    int days;
-    float dailyGoal;
-    float wr;
-    int calculations;
+    int tokensNeeded = 2200;
+    int tokensLeft = 1200;
+    int currentTokens = 1000;
+    int days = 10;
+    float dailyGoal = (float)tokensLeft/days;
+    float wr = .51f;
+    int calculations = 1;
 
 
-    public TokenCalculator() throws IOException {
-        int earned = 0;
+    public TokenCalculator(Stats stats) throws IOException {
+        //out();
         for (int i = 0; i < calculations; i++) {
-            for (int j = 0; earned >= tokensLeft; j++) {
-                for (int k = 0; k < dailyGoal/win; k++) {
-                    int daily = 0;
-
+            int earned = 0;
+            for (int j = 0; earned <= tokensLeft; j++) {
+                System.out.print("Day " + (j+1) + ":");
+                int dailyEarned = 0;
+                int games = 0;
+                for (int k = 0; dailyEarned < dailyGoal; k++) {
+                     if (playGame()) {
+                         dailyEarned += win;
+                         earned += win;
+                     } else if (!(playGame())){
+                         dailyEarned += loss;
+                         earned += loss;
+                     }
+                     games = k;
                 }
+                System.out.println();
+                System.out.println("\tGames Played: " + games);
+                System.out.println("\tDaily Tokens Earned: " + dailyEarned);
+                System.out.println("\tEarned Tokens: " + earned);
+                System.out.println("\tTotal Tokens: " + (currentTokens+earned));
+                System.out.println("\tRemaining Tokens: " + (tokensLeft-earned));
             }
         }
     }
@@ -64,8 +79,30 @@ public class TokenCalculator implements Calculator {
         calculations = scan.nextInt();
     }
 
-    public void playGame() {
-
+    public boolean playGame() {
+        double rand = Math.random();
+        if (wr > .50) {
+            if (rand < wr) {
+                System.out.print(" W +10 |");
+                return true;
+            } else if (rand > wr) {
+                System.out.print(" L +5 |");
+                return false;
+            }
+        } else if (wr < .50) {
+            if (rand < wr) {
+                System.out.println(" L +5 |");
+                return false;
+            } else if (rand > wr) {
+                System.out.println(" W +10 |");
+                return true;
+            }
+        }
+        return false;
     }
+
+//    public boolean playGame(Stats stats) {
+//
+//    }
 }
 

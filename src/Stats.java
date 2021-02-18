@@ -13,7 +13,7 @@ public class Stats {
     ArrayList<Champion> sup = new ArrayList<>();
 
     public Stats() throws IOException {
-        for(int i = 0; i <= numChamps; i++) {
+        for(int i = 0; i < numChamps; i++) {
             String name = reader.readCellData((i + 1), 0);
             float wr = Float.parseFloat(reader.readCellData((i + 1), 1));
             float br = Float.parseFloat(reader.readCellData((i + 1), 2));
@@ -21,7 +21,7 @@ public class Stats {
             String[] roles = new String[3];
             roles[0] = reader.readCellData((i + 1), 4);
             champions.add(new Champion(name, roles, wr, br, pr));
-            System.out.println(champions.get(i).toString());
+            //System.out.println(champions.get(i).toString());
         }
         sortRoles();
     }
