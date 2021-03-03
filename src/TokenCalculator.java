@@ -5,21 +5,23 @@
  * and games per day in a league event
  */
 import java.io.IOException;
+import java.lang.reflect.Array;
+import java.util.ArrayList;
 
 public class TokenCalculator implements Calculator {
     int win = 10;
     int loss = 5;
-    int tokensNeeded = 2200;
-    int tokensLeft = 1200;
-    int currentTokens = 1000;
-    int days = 10;
+    int tokensNeeded;
+    int tokensLeft;
+    int currentTokens;
+    int days;
     float dailyGoal = (float)tokensLeft/days;
-    float wr = .51f;
-    int calculations = 1;
+    float wr;
+    int calculations;
 
 
-    public TokenCalculator(Stats stats) throws IOException {
-        //out();
+    public TokenCalculator() {
+        out();
         for (int i = 0; i < calculations; i++) {
             int earned = 0;
             for (int j = 0; earned <= tokensLeft; j++) {
@@ -44,6 +46,10 @@ public class TokenCalculator implements Calculator {
                 System.out.println("\tRemaining Tokens: " + (tokensLeft-earned));
             }
         }
+    }
+
+    public TokenCalculator(Stats stats) throws IOException {
+
     }
 
     @Override
@@ -104,5 +110,12 @@ public class TokenCalculator implements Calculator {
 //    public boolean playGame(Stats stats) {
 //
 //    }
+
+    public Champion pickTop(Stats stats) {
+        ArrayList<Champion> top = stats.getTop();
+        for (int i = 0; i < stats.getTop().size(); i++) {
+
+        }
+    }
 }
 

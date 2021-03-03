@@ -3,14 +3,14 @@ import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 public class Stats {
-    ExcelReader reader = new ExcelReader("C:\\Users\\bigta\\IdeaProjects\\Event Token Calculator\\assets\\championstats.xlsx");
-    int numChamps = 154;
-    ArrayList<Champion> champions = new ArrayList<Champion>();
-    ArrayList<Champion> top = new ArrayList<>();
-    ArrayList<Champion> jgl = new ArrayList<>();
-    ArrayList<Champion> mid = new ArrayList<>();
-    ArrayList<Champion> bot = new ArrayList<>();
-    ArrayList<Champion> sup = new ArrayList<>();
+    private ExcelReader reader = new ExcelReader("C:\\Users\\bigta\\IdeaProjects\\Event Token Calculator\\assets\\championstats.xlsx");
+    private int numChamps = 154;
+    private ArrayList<Champion> champions = new ArrayList<Champion>();
+    private ArrayList<Champion> top = new ArrayList<>();
+    private ArrayList<Champion> jgl = new ArrayList<>();
+    private ArrayList<Champion> mid = new ArrayList<>();
+    private ArrayList<Champion> bot = new ArrayList<>();
+    private ArrayList<Champion> sup = new ArrayList<>();
 
     public Stats() throws IOException {
         for(int i = 0; i < numChamps; i++) {
