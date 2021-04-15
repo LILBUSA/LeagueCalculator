@@ -1,3 +1,5 @@
+package com.LeagueCalculator.TokenCalculator;
+
 import java.io.IOException;
 import java.util.Scanner;
 

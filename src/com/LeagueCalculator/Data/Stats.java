@@ -1,8 +1,13 @@
+package com.LeagueCalculator.Data;
+
+import com.LeagueCalculator.Data.Champion.Champion;
+import com.LeagueCalculator.Data.Champion.Sorter;
+
 import java.io.IOException;
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 public class Stats {
+    public Sorter sorter;
     private ExcelReader reader = new ExcelReader("C:\\Users\\bigta\\IdeaProjects\\Event Token Calculator\\assets\\championstats.xlsx");
     private int numChamps = 154;
     private ArrayList<Champion> champions = new ArrayList<Champion>();
@@ -45,8 +50,8 @@ public class Stats {
         }
     }
 
-//    public Champion pick(String role) {
-//        Champion picked;
+//    public com.LeagueCalculator.Data.Champion.Champion pick(String role) {
+//        com.LeagueCalculator.Data.Champion.Champion picked;
 //        if (role.equals("top")) {
 //
 //            return picked;

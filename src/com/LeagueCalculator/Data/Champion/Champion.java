@@ -1,4 +1,4 @@
-import java.io.IOException;
+package com.LeagueCalculator.Data.Champion;
 
 public class Champion {
     private String name;
